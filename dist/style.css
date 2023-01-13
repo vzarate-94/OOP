@@ -1,0 +1,12 @@
+h1{
+  background-color: red;
+  text-align: center;
+  
+  height: 5rem;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+  border: 3px solid black;
+}
