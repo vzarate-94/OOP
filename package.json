@@ -8,8 +8,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^8.2.4",
-    "jest": "^24.9.0"
+    "inquirer": "^8.2.4"
   },
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
 }
