@@ -126,7 +126,7 @@ function lesserEmployeeData() {
             main = main.replace(/{{teamTitle}}/g, teamTitle);
 
             // Loop through the employees and print out all of their cards without replacing the previous one.
-            var managerCard = fs.readFileSync('./dist/index.html', 'utf8');
+            var managerCard = fs.readFileSync('./dist/Manager.html', 'utf8');
             managerCard = managerCard.replace('{{name}}', manager.getName());
             managerCard = managerCard.replace('{{role}}', manager.getRole());
             managerCard = managerCard.replace('{{id}}', manager.getId());
@@ -147,7 +147,7 @@ function lesserEmployeeData() {
             // Adds cards to main.html and outputs to team.html.
             main = main.replace('{{cards}}', cards);
 
-            fs.writeFileSync('./dist/index.html', main);
+            fs.writeFileSync('./dist/Output.html', main);
 
             // Console.log that the html has been generated
             console.log("The team.html has been generated in output");
@@ -159,7 +159,7 @@ function lesserEmployeeData() {
 
 function renderEmployee(employee) {
     if (employee.getRole() === "Intern") {
-        var internCard = fs.readFileSync('./dist/index.html', 'utf8');
+        var internCard = fs.readFileSync('./dist/Intern.html', 'utf8');
         internCard = internCard.replace('{{name}}', employee.getName());
         internCard = internCard.replace('{{role}}', employee.getRole());
         internCard = internCard.replace('{{id}}', employee.getId());
@@ -167,7 +167,7 @@ function renderEmployee(employee) {
         internCard = internCard.replace('{{school}}', employee.getSchool());
         return internCard;
     } else if (employee.getRole() === "Engineer") {
-        var engineerCard = fs.readFileSync('./dist/index.html', 'utf8');
+        var engineerCard = fs.readFileSync('./dist/Engineer.html', 'utf8');
         engineerCard = engineerCard.replace('{{name}}', employee.getName());
         engineerCard = engineerCard.replace('{{role}}', employee.getRole());
         engineerCard = engineerCard.replace('{{id}}', employee.getId());
