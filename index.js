@@ -119,14 +119,14 @@ function lesserEmployeeData() {
             //renderHTML
             //==================
 
-            var main = fs.readFileSync('./templates/main.html', 'utf8');
+            var main = fs.readFileSync('./dist/index.html', 'utf8');
             // The slashes and g => regular expressions (regex)
             // This allows the replace function to replace all occurances of teamTitle.
             // If I just did '{{teamTitle}}' then it only replaces the first instance.
             main = main.replace(/{{teamTitle}}/g, teamTitle);
 
             // Loop through the employees and print out all of their cards without replacing the previous one.
-            var managerCard = fs.readFileSync('./templates/Manager.html', 'utf8');
+            var managerCard = fs.readFileSync('./dist/index.html', 'utf8');
             managerCard = managerCard.replace('{{name}}', manager.getName());
             managerCard = managerCard.replace('{{role}}', manager.getRole());
             managerCard = managerCard.replace('{{id}}', manager.getId());
@@ -147,7 +147,7 @@ function lesserEmployeeData() {
             // Adds cards to main.html and outputs to team.html.
             main = main.replace('{{cards}}', cards);
 
-            fs.writeFileSync('./output/team.html', main);
+            fs.writeFileSync('./dist/index.html', main);
 
             // Console.log that the html has been generated
             console.log("The team.html has been generated in output");
@@ -159,7 +159,7 @@ function lesserEmployeeData() {
 
 function renderEmployee(employee) {
     if (employee.getRole() === "Intern") {
-        var internCard = fs.readFileSync('./templates/Intern.html', 'utf8');
+        var internCard = fs.readFileSync('./dist/index.html', 'utf8');
         internCard = internCard.replace('{{name}}', employee.getName());
         internCard = internCard.replace('{{role}}', employee.getRole());
         internCard = internCard.replace('{{id}}', employee.getId());
@@ -167,7 +167,7 @@ function renderEmployee(employee) {
         internCard = internCard.replace('{{school}}', employee.getSchool());
         return internCard;
     } else if (employee.getRole() === "Engineer") {
-        var engineerCard = fs.readFileSync('./templates/Engineer.html', 'utf8');
+        var engineerCard = fs.readFileSync('./dist/index.html', 'utf8');
         engineerCard = engineerCard.replace('{{name}}', employee.getName());
         engineerCard = engineerCard.replace('{{role}}', employee.getRole());
         engineerCard = engineerCard.replace('{{id}}', employee.getId());

@@ -1,22 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Team Organizer</title>
-  <script defer src="../index.js"></script>
+    <title>{{teamTitle}}</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"
+        id="bootstrap-css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+
+    <link href="../css/style.css" rel="stylesheet">
 </head>
+
 <body>
-  <header id="hello">My Team</header>
-  <div>
-    <h1>Name</h1>
-    <h2>Role</h2>
-    <h4>Number</h4>
-  </div>
-  <div>
-    <h1 id="inputName">Name</h1>
-    <h2 id="inputPhrase">Phrase</h2>
-  </div>
-</body>
+
+    <h1 id="teamName">{{teamTitle}}</h1>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--Container contains cards that hold employee information-->
+    <div class="container">
+
+        {{cards}}
+
+    </div>
+
+
 </html>
