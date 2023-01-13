@@ -5,8 +5,19 @@ h1{
   height: 5rem;
 }
 
+.box {
+
+display: flex;
+flex-direction: row;
+padding: 3rem;
+
+
+}
+
 .container {
-  display: flex;
-  justify-content: flex-end;
-  border: 3px solid black;
+align-items: center;
+border: 3px solid black;
+background-color: beige;
+width: 500px;
+margin: 3rem;
 }
