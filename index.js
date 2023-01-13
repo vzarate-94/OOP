@@ -1,4 +1,12 @@
+const firstEl = document.getElementById("hello")
+
+firstEl.innerHTML = "hello Puta"
+
 const inquirer = require("inquirer");
+
+const NameEl = document.getElementById("inputName")
+
+const phraseEl = document.getElementById("inputPhrase")
 
 inquirer
   .prompt([
@@ -17,4 +25,3 @@ inquirer
   .then(answers => {
     console.log(`Hi ${answers.name}! Your favorite color is ${answers.color}.`);
   });
-  
