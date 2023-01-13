@@ -1,110 +1,98 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-
-// Employee template based on these below.
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 
-//===================================================================
-// Welcome to a team information HTML generator!
-//===================================================================
 
-// This array fills in with employee data.
+
 const teamMembers = [];
-// Manager will change-- can't be a const. 
 let manager;
-// This info is for the HTML.
 let teamTitle;
 
-//=========================================================
-// First, we prompt the user for the manager/project info.
-//=========================================================
+
+// prompt the user for the project information.
+
 
 function managerData() {
     inquirer.prompt([
-        {   // Fill html with teamName.
+        {   
             type: "input",
-            message: "What is the name of this team/project?",
+            message: "Team or Project Name?",
             name: "teamTitle"
         },
-        {   // There is only 1 manager for a team.
+        {   
             type: "input",
-            message: "Who is the manager of this project?",
+            message: "Managers Name?",
             name: "managerName"
         },
-        {   // Employee ID.
+        {   
             type: "input",
-            message: "What is the manager's ID?",
+            message: "Manager's ID?",
             name: "managerID"
         },
-        {   // Employee Email.
+        {   
             type: "input",
-            message: "What is the manager's email?",
+            message: "Manager's email?",
             name: "managerEmail"
         },
         {
             type: "input",
-            message: "What is the manager's office number?",
+            message: "Manager's office number?",
             name: "officeNumber"
         }]).then(managerAnswers => {
             manager = new Manager(managerAnswers.managerName, managerAnswers.managerID, managerAnswers.managerEmail, managerAnswers.officeNumber);
             teamTitle = managerAnswers.teamTitle;
-            console.log("Now we will ask for employee information.")
+            console.log("Please input employee information.")
             lesserEmployeeData();
         });
 }
-//=================================================================
-// This repeats if more employees need to be added.
-//=================================================================
+
 function lesserEmployeeData() {
     inquirer.prompt([
         {
             type: "list",
-            message: "What is this employee's role?",
+            message: "what type of Employee",
             name: "employeeRole",
             choices: ["Intern", "Engineer"]
         },
 
-        //==================================================================
-        // These questions are based on the employeeRole above.
-        //==================================================================
         {
             type: "input",
-            message: "What is the employee's name?",
+            message: "Employee's name?",
             name: "employeeName"
         },
         {
             type: "input",
-            message: "What is the employee's id?",
+            message: "Employee's id?",
             name: "employeeId"
         },
         {
             type: "input",
-            message: "What is the employee's email?",
+            message: "Employee's email?",
             name: "employeeEmail"
         },
         {
             type: "input",
-            message: "What is the Engineer's Github?",
+            message: "Engineer's Github?",
             name: "github",
             when: (userInput) => userInput.employeeRole === "Engineer"
         },
         {
             type: "input",
-            message: "What's the Intern's school?",
+            message: "Intern's University?",
             name: "school",
             when: (userInput) => userInput.employeeRole === "Intern"
         },
         {
             type: "confirm",
             name: "newEmployee",
-            message: "Would you like to add another team member?" // if yes, go back again. If no, renderHTML
+            message: "Would you like to add another employee?" 
         }
     ]).then(answers => {
-        //============================================================
+        
         // Pushes a new intern into the team members array
-        //============================================================
+        
         if (answers.employeeRole === "Intern") {
             const employee = new Intern(answers.employeeName, answers.employeeId, answers.employeeEmail, answers.school);
             teamMembers.push(employee);
@@ -150,7 +138,7 @@ function lesserEmployeeData() {
             fs.writeFileSync('./dist/Output.html', main);
 
             // Console.log that the html has been generated
-            console.log("The team.html has been generated in output");
+            console.log("An Output.html file was generated and put in the dists directory!");
         }
     });
 }
